@@ -71,3 +71,41 @@ $nombre = Read-Host "Ecrivez votre nombre "
 for($i = 0; $i -le $nombre; $i++){
     Write-Host $i
 }
+
+# Exercice 12
+[string]$mdp = ""
+do{
+    [string]$mdp = Read-Host "Entrer un mot de passe"
+}while ([string]$mdp -eq "")
+
+Write-Host $mdp
+
+# Exercice 13
+$nomservice =  Read-Host "Le nom du service "
+$service = get-service -name $nomservice
+
+if($service.status -eq "Running"){
+    write-host "service en cours d'execusion"
+}elseif ($service -eq $null) {
+    Write-Host "service introuvable"
+}else {
+    Write-Host "service arrêté"
+}
+
+# Exercice 14
+$notes = @(12,25,15,16)
+$max = 0
+
+foreach($note in $notes){
+    if($note -gt $max){
+        $max = $note
+     }   
+ }   
+
+ Write-Host "la note max est $max"
+
+# Exercice 15
+Get-Module -ListAvailable
+Get-Command -Module Microsoft.PowerShell.Management
+
+get-command -CommandType Cmdlet
