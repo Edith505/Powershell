@@ -1,10 +1,73 @@
-$servName = Read-Host "Veuillez saisir le nom du service : "
-$services = Get-Service | where { $_.name -like "*$servName*"}
-if ($services.Count -gt 0)
-{
-    foreach($serv in $services)
-    {
-        Write-Host -foregroundcolor Red $serv.DisplayName - $serv.Name " " Status : $serv.Status
-        $count++
-    }
+# Exercice 1
+$prenom = "John"
+$age = 30
+
+write-host "Je m'appelle $prenom et j'ai $age ans."
+
+# Exercice 2
+$a = 10
+$b = 5
+
+$somme = $a + $b
+write-host "$a + $b = $somme"
+
+# Exercice 3
+$age = Read-Host "Entrez votre âge "
+if($age -le 18) {
+    write-host "Mineur."
+} else {
+    write-host "Majeur."
+}
+
+# Exercice 4
+$fruits = @('fraise', 'cerise', 'mangue', 'pomme', 'banane')
+foreach($fruit in $fruits) {
+    write-host $fruit
+}
+
+# Exercice 5
+for($i = 1; $i -le 10; $i++) {
+    write-host $i
+}
+
+# Exercice 6
+New-Item test.txt -ItemType File -Force
+set-content test.txt "Bonjour Powershell"
+$fruits = @('fraise', 'cerise', 'mangue', 'pomme', 'banane')
+foreach($fruit in $fruits) {
+     Add-Content test.txt $fruit
+}
+Get-Content .\test.txt
+
+# Exercice 7
+Get-Service | Where-Object { $_.Status -eq "Stopped" }
+
+# Exercice 8
+$ram = 100
+Get-Process | Where-Object { $_.WorkingSet -gt $ram  }
+
+# Exercice 9
+$personne = [PSCustomObject]@{
+    Name = "Eddy"
+    Ville = "Québec"
+    Age = 30
+}
+
+Write-Host $personne.Age
+Write-Host $personne.Name
+Write-Host $personne.Ville
+
+# Exercice 10
+$personnes = Import-Csv -Path "E:\Code\AutomatisationDesTachesTP-1\Powershell\personne.csv" -Delimiter ";" -Header "Nom","Age"
+
+foreach($personne in $personnes){
+    if ([int]$personne.Age -ge 18){
+        Write-Host $personne.Nom
+    } 
+}
+
+# Exercice 11
+$nombre = Read-Host "Ecrivez votre nombre "
+for($i = 0; $i -le $nombre; $i++){
+    Write-Host $i
 }

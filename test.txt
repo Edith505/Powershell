@@ -1,0 +1,6 @@
+Bonjour Powershell
+fraise
+cerise
+mangue
+pomme
+banane
