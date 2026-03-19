@@ -5,7 +5,7 @@ while ($valide -eq $false) {
 
     $conversion =  $date -as [datetime]
 
-    if($conversion -ne $null){
+    if($null -ne $conversion){
         $valide = $true
     }
 }
